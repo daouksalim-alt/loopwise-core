@@ -1,5 +1,7 @@
 # Loopwise Core
 
+[Try the browser demo](https://daouksalim-alt.github.io/loopwise-core/examples/browser/) · [Download version 0.1.1](https://github.com/daouksalim-alt/loopwise-core/releases/tag/v0.1.1) · [Verified release checks](https://github.com/daouksalim-alt/loopwise-core/actions/runs/41234835493)
+
 Deterministic puzzle generation and answer checking for small learning and recreational game projects. The same inputs reproduce the same questions, making bug reports and regression tests easier to investigate.
 
 **Status:** `0.1.1`, October 31, 2026. Package name: `@daouksalim-alt/loopwise-core`. The source is available under the [MIT license](LICENSE). It has not been published to npm, and external adoption is not yet established.
