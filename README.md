@@ -8,6 +8,12 @@ Deterministic puzzle generation and answer checking for small learning and recre
 
 The package extracts game logic from Salim Daouk's Loopwise project into a small module with no runtime dependencies. It contains no account system, analytics, storage, networking, ads, or billing. A separate browser example shows how to render and answer the generated questions.
 
+## Try one integration
+
+Building a small browser game or a learning demo? [Download the offline starter](https://daouksalim-alt.github.io/loopwise-core/downloads/loopwise-starter.html), open the saved HTML file in a browser, and follow the [10-minute integration trial](docs/QUICKSTART.md). No account, package installation or server is needed for the downloaded starter.
+
+We would like to learn whether another developer can use one generator in a real prototype. [Tell us what worked or where you got stuck](https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml). Please report your actual experience; a failed attempt is useful too. See the [independent-use record](docs/ADOPTION.md) for what has and has not been verified.
+
 ## Try the local package
 
 Use Git and Node.js 22 or later. The verification command includes an offline package installation in a temporary directory; it does not fetch runtime dependencies.

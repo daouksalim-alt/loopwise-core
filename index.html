@@ -1,8 +1,50 @@
 <!doctype html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loopwise Core — reproducible puzzles</title>
-<style>body{font:18px/1.6 system-ui,sans-serif;max-width:760px;margin:12vh auto;padding:24px;background:#f4f7fb;color:#172d43}h1{font-size:3rem;line-height:1.1}a{color:#075985}.start{display:inline-block;background:#075985;color:white;padding:12px 20px;border-radius:9px;text-decoration:none}a:focus-visible{outline:3px solid #b45309;outline-offset:4px}</style>
-<main><p>MIT licensed · JavaScript · No runtime dependencies</p><h1>Reproducible puzzles.<br>Inspectable answers.</h1><p>Six small puzzle generators for developers building recreational and learning activities. Use a seed to reproduce a question, render it in your own interface, and check the answer locally.</p><p><a class="start" href="examples/browser/">Try the browser example</a></p><p><a href="https://github.com/daouksalim-alt/loopwise-core">Source, installation and contribution guide</a></p><p>This is a new open-source project. These activities are for recreation and learning; they are not medical assessments or validated IQ tests.</p></main>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Try six reproducible JavaScript puzzle generators, download an offline starter, and use one in your own browser game or learning demo. MIT licensed, with no runtime dependencies.">
+  <title>Loopwise Core — small puzzles for your next project</title>
+  <style>
+    :root{font:17px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#192d2c;background:#f4f5ef;--green:#1b5144;--muted:#52645e;--line:#ccd7cf}
+    *{box-sizing:border-box}body{margin:0}main{max-width:1080px;margin:auto;padding:36px 28px 48px}a{color:var(--green);text-underline-offset:3px}a:focus-visible{outline:3px solid #3468b4;outline-offset:5px}nav{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:.88rem}.brand{font-weight:800;letter-spacing:.08em;text-decoration:none}.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;margin:70px 0 44px}.eyebrow{font-size:.75rem;letter-spacing:.13em;font-weight:750;color:var(--green)}h1{font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;letter-spacing:-.045em;margin:16px 0 24px}h2{font-size:1.4rem;line-height:1.3;margin:0 0 12px}h3{font-size:1.05rem;margin:0 0 10px}.intro{font-size:1.07rem;color:var(--muted)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 14px}.button{display:inline-block;border:1px solid var(--green);border-radius:8px;padding:11px 17px;text-decoration:none;font-size:.9rem;font-weight:650}.primary{background:var(--green);color:#fff}.secondary{background:#fff}.small{font-size:.83rem;color:var(--muted)}.example{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}.example p{margin:0 0 16px}.example pre{font:14px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;background:#f3f5ef;border-radius:8px;padding:18px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:42px 0}.features article{border-top:2px solid var(--line);padding-top:18px}.features p{font-size:.9rem;color:var(--muted);margin:0}.trial{background:#e7eee5;border:1px solid var(--line);border-radius:18px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:34px}.trial p{margin:0 0 14px}.trial ol{padding-left:22px;margin:0}.trial li+li{margin-top:9px}footer{margin-top:36px;font-size:.8rem;color:var(--muted)}footer p{margin:9px 0}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9em}@media(max-width:760px){main{padding:24px 20px}.hero{grid-template-columns:1fr;gap:26px;margin-top:42px}.features{grid-template-columns:1fr;gap:24px}.trial{grid-template-columns:1fr;gap:20px;padding:24px}.example{padding:20px}nav{align-items:start}}
+  </style>
+</head>
+<body>
+  <main>
+    <nav aria-label="Project"><a class="brand" href="./">LOOPWISE CORE</a><a href="https://github.com/daouksalim-alt/loopwise-core">Source &amp; documentation ↗</a></nav>
+    <section class="hero" aria-labelledby="page-heading">
+      <div>
+        <p class="eyebrow">JAVASCRIPT · MIT LICENSE · NO RUNTIME DEPENDENCIES</p>
+        <h1 id="page-heading">A small puzzle.<br>Your own project.</h1>
+        <p class="intro">Six reproducible puzzle generators for browser games and learning demos. Get a question, render it your way, and check the answer locally.</p>
+        <div class="actions"><a class="button primary" href="examples/browser/">Try the live example</a><a class="button secondary" href="downloads/loopwise-starter.html" download="loopwise-starter.html">Download offline starter</a></div>
+        <p class="small">No sign-up to try it. The starter is one HTML file you can open and edit on your computer.</p>
+      </div>
+      <div class="example">
+        <p class="eyebrow">ONE GENERATOR, TWO FUNCTIONS</p>
+        <pre><code>const question = makeQuestion(
+  'math', 0, 'my-demo', 2
+);
+
+// Render the prompt and options.
+// Collect a selected option index.
+const correct = evaluateAnswer(
+  question, selectedIndex
+);</code></pre>
+        <p class="small" style="margin:16px 0 0">The starter includes the library and a small working interface. Change the rendering section to make it yours.</p>
+      </div>
+    </section>
+    <section class="features" aria-label="What the library provides">
+      <article><h3>Reproduce a question</h3><p>Keep the version, seed, index and difficulty to replay the same output. Useful for sharing a bug or testing your interface.</p></article>
+      <article><h3>Use the pieces you need</h3><p>Math, number sequences, words, memory, color and odd-one-out tasks. Plain question objects work with your own interface.</p></article>
+      <article><h3>Inspect and adapt</h3><p>Readable JavaScript, answer explanations, TypeScript declarations and an MIT license. The runtime makes no network requests.</p></article>
+    </section>
+    <section class="trial" aria-labelledby="trial-heading">
+      <div><h2 id="trial-heading">Try one small integration</h2><p>Could you use one generator in a small project? Tell us what worked or where you got stuck.</p><p class="small">This is a new project. Specific feedback from an actual attempt helps shape what comes next.</p><a href="https://github.com/daouksalim-alt/loopwise-core/blob/main/docs/QUICKSTART.md">Follow the 10-minute integration trial →</a></div>
+      <div><ol><li>Download the starter and open it in your browser.</li><li>Edit one prompt, layout or control in your copy.</li><li>Share what you tried, what worked, and one missing piece.</li></ol><p style="margin-top:18px"><a href="https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml">Give integration feedback →</a></p><p class="small">Feedback opens a public GitHub issue. A public link to your project is optional.</p></div>
+    </section>
+    <footer><p>The answer keys are inspectable, so this is unsuitable for secure exams or competitive anti-cheat scoring. The English word and reasoning banks are finite. Some activities are visual; accessibility depends on the activity and your implementation.</p><p>Recreational and learning activities only. No medical benefit, cognitive assessment or validated IQ score is claimed. <a href="https://github.com/daouksalim-alt/loopwise-core/blob/main/LICENSE">MIT license</a> · <a href="https://github.com/daouksalim-alt/loopwise-core/releases">Releases</a></p></footer>
+  </main>
+</body>
 </html>

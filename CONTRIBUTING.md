@@ -6,6 +6,8 @@ Loopwise Core welcomes focused bug reports and pull requests. Contributions are 
 
 Use Node.js 22 or later and run `npm run verify`. For a generation problem, record the package version, game ID, index, seed, and difficulty. For a daily workout, also record the date string. Avoid including real names, student details, health information, or other private data in seeds and bug reports.
 
+The offline starter is generated from the engine, license and `examples/starter.template.html`. After changing any of these inputs or the package version, run `npm run build:starter` and commit the generated download. `npm run verify` rejects stale output. Edit the template rather than the generated HTML.
+
 Prefer a small change with one clear purpose. Include a regression test that reproduces the behavior before the fix, then verify the full test suite. For calculation or sequence changes, derive the expected answer independently rather than asserting the generator's own stored answer.
 
 ## Review expectations

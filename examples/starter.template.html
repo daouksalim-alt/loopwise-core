@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loopwise Core — offline starter</title>
+  <style>
+    :root{font:17px/1.5 system-ui,sans-serif;color:#18352e;background:#f3f6f0}
+    *{box-sizing:border-box}body{margin:0}main{max-width:740px;margin:32px auto;padding:24px}
+    h1{font-size:2.4rem;line-height:1.1;margin:12px 0}.muted,small{color:#50675f}
+    section{background:white;border:1px solid #ccd9d1;border-radius:14px;padding:24px;margin:24px 0}
+    .settings{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px}label{display:block;font-weight:600}
+    input,select,button{font:inherit}input,select{width:100%;padding:9px;border:1px solid #9bb1a5;border-radius:6px;background:white}
+    button{padding:10px 16px;border:1px solid #1c5b45;border-radius:7px;cursor:pointer;background:#1c5b45;color:white;min-height:44px}
+    button.secondary{background:white;color:#1c5b45}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #2b68b8;outline-offset:3px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}fieldset{padding:0;border:0;margin:18px 0}legend{font-weight:600;margin-bottom:12px}
+    #question{font-size:2rem;font-weight:750;margin:18px 0}#choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .choice{display:flex;gap:10px;align-items:center;border:1px solid #ccd9d1;border-radius:7px;padding:12px;cursor:pointer}
+    .choice:has(input:checked){background:#e8f2e7;border-color:#1c5b45}.choice input{width:20px;height:20px;margin:0;accent-color:#1c5b45}
+    #feedback{min-height:1.5em;font-weight:650}a{color:#155841}pre{font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere}
+    @media(max-width:550px){main{margin:12px auto;padding:16px}.settings{grid-template-columns:1fr 1fr}.seed-field{grid-column:1/-1}section{padding:20px}}
+  </style>
+</head>
+<body>
+<main>
+  <p class="muted">LOOPWISE CORE / OFFLINE STARTER</p>
+  <h1>A puzzle page you can make your own.</h1>
+  <p>One HTML file. Open it in a modern browser, try a question, then edit the page in a text editor. No install, account, or internet connection is required after downloading.</p>
+  <section aria-label="Puzzle settings">
+    <form id="settings">
+      <div class="settings">
+        <label class="seed-field">Seed<input id="seed" value="my-first-puzzle" maxlength="200" required></label>
+        <label>Difficulty<select id="difficulty"><option value="1">1 · Gentle</option><option value="2">2 · Medium</option><option value="3">3 · Challenge</option></select></label>
+        <label>Index<input id="index" type="number" value="0" min="0" max="9007199254740991" step="1" required></label>
+      </div>
+      <div class="actions"><button type="submit">Generate / repeat</button><button id="next" type="button" class="secondary">Next question</button></div>
+    </form>
+    <p class="muted"><small>The same seed, index, difficulty and library version reproduce the same question.</small></p>
+  </section>
+  <section aria-labelledby="puzzle-heading">
+    <h2 id="puzzle-heading" tabindex="-1">Quick Math</h2>
+    <p id="question">Loading the embedded module…</p>
+    <form id="answer-form"><fieldset><legend>Choose one answer</legend><div id="choices"></div></fieldset><button type="submit">Check answer</button></form>
+    <p id="feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+  </section>
+  <p class="muted"><small>Built with Loopwise Core __LOOPWISE_VERSION__. This is a maintainer-created integration example. Recreational puzzles only; no clinical benefit or validated IQ scoring. This file sends no data and stores no progress. Answer keys are inspectable in the source.</small></p>
+  <p><a href="https://github.com/daouksalim-alt/loopwise-core/blob/main/docs/QUICKSTART.md">Integration guide</a> · <a href="https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml">Share integration feedback</a></p>
+  <details><summary>MIT license and attribution</summary><pre>__LOOPWISE_LICENSE__</pre></details>
+  <noscript><p>JavaScript is required to run the puzzle. You can still edit and inspect this HTML file.</p></noscript>
+</main>
+<script type="module">
+// Generated engine: edit src/games.js in the repository, then rebuild.
+// The embedded engine is exact source, not a separately maintained fork.
+/*__LOOPWISE_ENGINE__*/
+
+// ===== YOUR PAGE: start editing here =====
+// This small host renders one math question. The library does the generation
+// and answer checking; your page owns the interface and any scoring or storage.
+const starterSettings = document.getElementById('settings');
+const starterSeed = document.getElementById('seed');
+const starterIndex = document.getElementById('index');
+const starterDifficulty = document.getElementById('difficulty');
+const starterFeedback = document.getElementById('feedback');
+let starterQuestion;
+
+function showStarterQuestion(focusHeading = false) {
+  if (!starterSettings.reportValidity()) return;
+  try {
+    starterQuestion = makeQuestion('math', Number(starterIndex.value), starterSeed.value, Number(starterDifficulty.value));
+  } catch (error) {
+    starterFeedback.textContent = error instanceof Error ? error.message : 'Unable to generate a question.';
+    return;
+  }
+  document.getElementById('question').textContent = starterQuestion.display;
+  const choices = document.getElementById('choices');
+  choices.replaceChildren();
+  starterQuestion.options.forEach((option, index) => {
+    const label = document.createElement('label');
+    label.className = 'choice';
+    const input = document.createElement('input');
+    input.type = 'radio'; input.name = 'answer'; input.value = String(index);
+    const text = document.createElement('span');
+    text.textContent = option;
+    label.append(input, text); choices.append(label);
+  });
+  starterFeedback.textContent = '';
+  if (focusHeading) document.getElementById('puzzle-heading').focus();
+}
+
+starterSettings.addEventListener('submit', event => {
+  event.preventDefault();
+  showStarterQuestion(true);
+});
+document.getElementById('next').addEventListener('click', () => {
+  if (!starterSettings.reportValidity()) return;
+  const next = Number(starterIndex.value) + 1;
+  if (!Number.isSafeInteger(next)) {
+    starterFeedback.textContent = 'Choose a smaller index before continuing.';
+    return;
+  }
+  starterIndex.value = String(next);
+  showStarterQuestion(true);
+});
+document.getElementById('answer-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const selected = document.querySelector('input[name="answer"]:checked');
+  if (!starterQuestion || !selected) {
+    starterFeedback.textContent = 'Choose an answer first.';
+    document.querySelector('input[name="answer"]')?.focus();
+    return;
+  }
+  const correct = evaluateAnswer(starterQuestion, Number(selected.value));
+  starterFeedback.textContent = `${correct ? 'Correct.' : 'Not quite.'} ${starterQuestion.explanation}`;
+});
+showStarterQuestion();
+// ===== END YOUR PAGE =====
+</script>
+</body>
+</html>

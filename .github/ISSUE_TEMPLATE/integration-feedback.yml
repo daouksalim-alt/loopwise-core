@@ -1,0 +1,52 @@
+name: Integration feedback
+description: Share what worked or blocked you when trying Loopwise Core in a project.
+title: "Integration feedback: "
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for trying the library. This is a public issue: share only synthetic examples and public links. Please leave out personal information, credentials, private source code and student or patient data. Feedback is useful even if you could not complete an integration."
+  - type: dropdown
+    id: stage
+    attributes:
+      label: How far did you get?
+      options:
+        - Tried the hosted demo only
+        - Downloaded and opened the offline starter
+        - Ran a generator in my own prototype
+        - Integrated the library in an existing project
+        - Tried to integrate it but got blocked
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version and environment
+      description: Package version or commit, plus browser or Node.js version.
+      placeholder: "0.1.1; Firefox; plain HTML project"
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: What were you trying to build?
+      description: Which generator did you try, and where would it fit?
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: What worked, and what got in your way?
+      description: Setup trouble, API confusion, a missing feature, or a reason this was not useful are all welcome. Include the smallest synthetic reproduction if relevant.
+    validations:
+      required: true
+  - type: input
+    id: public-example
+    attributes:
+      label: Public project or reproduction link (optional)
+      description: A small public example helps us reproduce problems. Leave blank for private projects.
+  - type: checkboxes
+    id: showcase-permission
+    attributes:
+      label: Optional showcase permission
+      options:
+        - label: You may list the public project link above in a showcase, using its public project name. This is optional and does not affect support.
