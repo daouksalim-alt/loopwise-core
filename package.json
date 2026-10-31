@@ -1,0 +1,41 @@
+{
+  "name": "@daouksalim-alt/loopwise-core",
+  "version": "0.1.0",
+  "description": "Deterministic, dependency-free puzzle generation and answer checking extracted from Loopwise.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/games.d.ts",
+      "import": "./src/games.js"
+    }
+  },
+  "types": "./src/games.d.ts",
+  "files": [
+    "src",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "ROADMAP.md",
+    "PROVENANCE.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node --check src/games.js && node --check examples/cli.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "verify": "npm run check && npm test",
+    "example": "node examples/cli.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daouksalim-alt/loopwise-core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/daouksalim-alt/loopwise-core/issues"
+  }
+}
