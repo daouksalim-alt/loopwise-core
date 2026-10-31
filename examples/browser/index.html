@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Loopwise Core · Browser example</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">LOOPWISE CORE / INTEGRATION EXAMPLE</p>
+      <h1>Small puzzles.<br>Inspectable building blocks.</h1>
+      <p class="intro">Try six seeded puzzle generators. Every question comes from the same public ES module, with no runtime dependencies.</p>
+      <div class="tags"><span>MIT licensed</span><span>No account</span><span>No timer</span></div>
+    </header>
+    <div class="workspace">
+      <aside class="panel">
+        <h2>Choose a question</h2>
+        <form id="settings">
+          <label for="game">Activity</label>
+          <select id="game" name="game">
+            <option value="math">Quick Math</option>
+            <option value="numbers">Number Trail</option>
+            <option value="words">Word Mix</option>
+            <option value="odd">Odd One Out</option>
+            <option value="sequence">Sequence memory</option>
+            <option value="color">Color Clash (visual)</option>
+          </select>
+          <label for="seed">Seed</label>
+          <input id="seed" name="seed" value="hello-loopwise" maxlength="200" required>
+          <p class="hint">Reuse this text and the question index to reproduce a question in this version.</p>
+          <div class="field-pair">
+            <div><label for="difficulty">Difficulty</label><select id="difficulty" name="difficulty"><option value="1">1 · Gentle</option><option value="2">2 · Medium</option><option value="3">3 · Challenge</option></select></div>
+            <div><label for="index">Index</label><input id="index" name="index" type="number" min="0" max="9007199254740991" step="1" value="0" required></div>
+          </div>
+          <button type="submit" class="primary">Generate question</button>
+        </form>
+        <p class="hint">Difficulty affects some generators more than others. The English word bank is finite.</p>
+        <a class="source-link" href="https://github.com/daouksalim-alt/loopwise-core">Read the source ↗</a>
+      </aside>
+      <section class="panel puzzle" aria-labelledby="question-heading">
+        <p class="eyebrow" id="question-meta">DETERMINISTIC / REPRODUCIBLE</p>
+        <h2 id="question-heading" tabindex="-1">Loading the module…</h2>
+        <p id="question-prompt"></p>
+        <div id="stimulus" class="stimulus"></div>
+        <p id="task-note" class="task-note" hidden></p>
+        <button id="memory-toggle" type="button" class="secondary" hidden>Hide pattern and answer</button>
+        <form id="answer-form">
+          <fieldset id="answer-fieldset"><legend id="answer-legend">Choose an answer</legend><div id="answers" class="answers"></div></fieldset>
+          <div class="actions"><button id="check" type="submit" class="primary">Check answer</button><button id="next" type="button" class="secondary">Next question →</button></div>
+        </form>
+        <p id="feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+        <details><summary>Inspect the generated question</summary><p class="hint">Includes the correct answer. This is a learning example, not a secure exam.</p><pre id="question-json"></pre></details>
+      </section>
+    </div>
+    <footer><p>This example runs in your browser after loading the local files. It sends no answers, stores no progress, and loads no analytics.</p><p>Recreational puzzles only. No clinical benefit, cognitive assessment, or validated IQ score is claimed. Accessibility depends on the activity and host implementation.</p></footer>
+    <noscript><p class="panel">Enable JavaScript to run this example, or read the source files directly.</p></noscript>
+  </main>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>

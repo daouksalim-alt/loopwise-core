@@ -1,6 +1,6 @@
 {
   "name": "@daouksalim-alt/loopwise-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Deterministic, dependency-free puzzle generation and answer checking extracted from Loopwise.",
   "private": true,
   "license": "MIT",
@@ -17,6 +17,8 @@
   "types": "./src/games.d.ts",
   "files": [
     "src",
+    "examples",
+    "docs",
     "README.md",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
@@ -26,9 +28,11 @@
     "LICENSE"
   ],
   "scripts": {
-    "check": "node --check src/games.js && node --check examples/cli.mjs",
+    "check": "node --check src/games.js && node --check examples/cli.mjs && node --check examples/browser/app.mjs && node --check scripts/check-package.mjs",
     "test": "node --test tests/*.test.mjs",
-    "verify": "npm run check && npm test",
+    "verify": "npm run check && npm test && npm run check:package",
+    "check:package": "node scripts/check-package.mjs",
+    "check:types": "node scripts/check-package.mjs --types",
     "example": "node examples/cli.mjs"
   },
   "repository": {

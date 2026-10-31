@@ -2,18 +2,24 @@
 
 Deterministic puzzle generation and answer checking for small learning and recreational game projects. The same inputs reproduce the same questions, making bug reports and regression tests easier to investigate.
 
-**Status:** `0.1.0`, initial public source release, October 31, 2026. Package name: `@daouksalim-alt/loopwise-core`. The source is available under the [MIT license](LICENSE). It has not been published to npm, and no external adoption is claimed.
+**Status:** `0.1.1`, October 31, 2026. Package name: `@daouksalim-alt/loopwise-core`. The source is available under the [MIT license](LICENSE). It has not been published to npm, and external adoption is not yet established.
 
-The package extracts game logic from Salim Daouk's Loopwise project into a small module with no runtime dependencies. It contains no account system, analytics, storage, networking, ads, billing, or graphical interface.
+The package extracts game logic from Salim Daouk's Loopwise project into a small module with no runtime dependencies. It contains no account system, analytics, storage, networking, ads, or billing. A separate browser example shows how to render and answer the generated questions.
 
 ## Try the local package
 
-Use Node.js 22 or later. No dependency installation is needed for these commands.
+Use Git and Node.js 22 or later. The verification command includes an offline package installation in a temporary directory; it does not fetch runtime dependencies.
 
 ```sh
+git clone https://github.com/daouksalim-alt/loopwise-core.git
+cd loopwise-core
 npm run verify
 npm run example
 ```
+
+To try the browser example, run `python3 -m http.server 8000 --bind 127.0.0.1` from the repository root and open <http://localhost:8000/examples/browser/>. It uses the same exported module, with editable seed, game and difficulty controls. See the [integration guide](docs/INTEGRATION.md) for consumer installation and rendering details.
+
+The package checks validate the exported API from an installed tarball, not just source-relative imports. `npm run check:types` additionally checks a TypeScript consumer with the pinned compiler used in CI; this separate check requires npm registry access on first use.
 
 ```js
 import { makeQuestion, evaluateAnswer, makeWorkout } from './src/games.js';

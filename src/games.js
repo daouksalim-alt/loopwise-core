@@ -32,7 +32,9 @@ function assertDay(day) {
 export function seededRandom(seed) {
   assertSeed(seed);
   let n = 2166136261;
-  for (const char of String(seed)) n = Math.imul(n ^ char.charCodeAt(0), 16777619);
+  const text = String(seed);
+  // Iterate code units so both halves of a surrogate pair affect the seed.
+  for (let i = 0; i < text.length; i++) n = Math.imul(n ^ text.charCodeAt(i), 16777619);
   return () => {
     n = (n + 0x6D2B79F5) >>> 0;
     let x = Math.imul(n ^ n >>> 15, 1 | n);

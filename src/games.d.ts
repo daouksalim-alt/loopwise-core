@@ -26,7 +26,7 @@ export type WorkoutQuestion = Question & { gameId: GameId };
 export type ReasoningQuestion = (LogicQuestion | MathQuestion | NumberQuestion) & { gameId: 'reasoning' };
 
 export const GAMES: readonly Game[];
-/** Repeatable non-cryptographic random values in [0, 1). Seeds are stringified. */
+/** Repeatable non-cryptographic values in [0, 1). Hashes every UTF-16 code unit of String(seed); collisions are possible. */
 export function seededRandom(seed: Seed): () => number;
 /** Copies the array and shuffles it; rng must return finite values in [0, 1). */
 export function shuffled<T>(array: readonly T[], rng: () => number): T[];

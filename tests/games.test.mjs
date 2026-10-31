@@ -153,6 +153,18 @@ test('random streams are bounded, reproducible, and accept empty strings and zer
   assert.equal(seededRandom(1)(), seededRandom('1')());
 });
 
+test('random seeds include both UTF-16 code units of astral characters', () => {
+  const stream = seed => Array.from({ length: 4 }, seededRandom(seed));
+  // These symbols share a high surrogate but have different low surrogates.
+  // Previously the low surrogate was discarded, making every stream identical.
+  const seeds = ['😀', '😁', '🚀', '🚁'];
+  assert.equal(new Set(seeds.map(seed => JSON.stringify(stream(seed)))).size, seeds.length);
+  for (const seed of seeds) assert.deepEqual(stream(seed), stream(seed));
+  // Existing ASCII and BMP seeds retain their version-0.1.0 streams.
+  assert.deepEqual(stream('demo'), [0.8388890530914068, 0.13535357755608857, 0.055482710245996714, 0.4299785553012043]);
+  assert.deepEqual(stream('مرحبا'), [0.598879850236699, 0.1084749570582062, 0.23748112609609962, 0.7805050890892744]);
+});
+
 test('shuffle preserves input and elements and checks caller-supplied RNG outputs', () => {
   const input = Object.freeze([1, 2, 3, 4]);
   const result = shuffled(input, seededRandom('shuffle'));
