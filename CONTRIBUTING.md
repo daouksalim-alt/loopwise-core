@@ -1,5 +1,7 @@
 # Contributing
 
+The browser integration lab is generated from the offline starter and current engine. After changing the starter, run `npm run build:starter` followed by `npm run build:lab`. Edit `examples/lab.template.html`, the lab CSS or its modules for interface changes; do not edit the generated `examples/lab/index.html` by hand. `npm run verify` checks both generated outputs.
+
 Loopwise Core welcomes focused bug reports and pull requests. Contributions are provided under the project's [MIT license](LICENSE).
 
 ## Reproduce before changing

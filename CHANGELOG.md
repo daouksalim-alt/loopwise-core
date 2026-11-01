@@ -1,5 +1,13 @@
 # Changelog
 
+## Integration lab — November 1, 2026
+
+- Add a browser-only editor for the starter's HTML, CSS and JavaScript, a sandboxed preview, and HTML export with the exact engine and its MIT notice included.
+- Drafts remain in the tab; there is no autosave or telemetry. The preview blocks networking and has no access to the editor's origin. The exported document is an ordinary HTML file.
+- Add preview/error feedback, reversible reset, generated-output checks and three focused lab tests. The core API remains version 0.1.1.
+
+This is an onboarding experiment, not an integration requested by an outside user or evidence of outside adoption.
+
 ## 0.1.1 — October 31, 2026
 
 - Fix Unicode seed hashing: all UTF-16 code units now participate. Previously, different emoji sharing a high surrogate could generate identical question streams.

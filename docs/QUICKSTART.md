@@ -4,6 +4,10 @@ The first useful test is a small page of your own: generate a question, render i
 
 ## Start without an installation
 
+For a browser-only trial, open the [integration lab](https://daouksalim-alt.github.io/loopwise-core/examples/lab/). Change a heading under HTML, try a rendering change under JavaScript, choose **Run preview**, then answer the question. **Download your HTML** keeps your edited page, with the engine and its MIT notice included. Edits stay in the tab; there is no autosave, upload or shareable saved draft. The preview blocks networking and runs in an iframe without access to the editor's origin. Only the preview has that network restriction; downloaded pages use ordinary browser behavior.
+
+If you prefer your own editor:
+
 1. Download [loopwise-starter.html](../downloads/loopwise-starter.html) using GitHub's **Download raw file** control, or the download link on the project homepage. Keep the `.html` extension.
 2. Open the saved file in a modern browser. The puzzle works offline. No server, package manager, external script, account, or API key is needed.
 3. Try an answer. Change the index and generate another question; restore the earlier index to reproduce the first one. Changing the seed creates another repeatable sequence.

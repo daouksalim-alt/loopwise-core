@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Edit a working Loopwise Core puzzle integration in your browser, preview it, and download your own HTML page.">
+  <title>Loopwise Core — integration lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav aria-label="Project"><a href="../../">LOOPWISE CORE</a><a href="https://github.com/daouksalim-alt/loopwise-core">Source &amp; docs ↗</a></nav>
+  <header>
+    <p class="eyebrow">EDIT → RUN → TRY YOUR PAGE</p>
+    <h1>Make one puzzle your own.</h1>
+    <p>Change this working example directly in your browser. The library generates and checks the question; you control the page.</p>
+    <ol><li>Under <strong>HTML</strong>, change the heading or the seed input's <code>my-first-puzzle</code> value. Under <strong>JavaScript</strong>, try changing how the answer feedback is displayed.</li><li>Choose <strong>Run preview</strong> and answer a question.</li><li>Download your page or <a href="https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml">share what worked or blocked you</a>.</li></ol>
+    <p class="note">Your edits stay in this tab; they are not saved or sent anywhere. Download before closing. The preview blocks network requests and runs separately from the editor. This is a maintainer example, not evidence of outside adoption.</p>
+  </header>
+  <div class="actions"><button id="run" type="button">Run preview</button><button id="download" type="button" class="secondary">Download your HTML</button><button id="reset" type="button" class="secondary">Reset example</button><button id="undo-reset" type="button" class="secondary" hidden>Undo reset</button></div>
+  <p id="status" role="status" aria-live="polite" aria-atomic="true">Preparing the example…</p>
+  <div class="workspace">
+    <section aria-label="Edit the integration" class="editors">
+      <details open><summary>JavaScript · generation, rendering and checking</summary><label for="js">Your JavaScript</label><textarea id="js" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="edit-help"></textarea></details>
+      <details><summary>HTML · headings, controls and page content</summary><label for="html">Your HTML</label><textarea id="html" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="edit-help"></textarea></details>
+      <details><summary>CSS · colors, layout and type</summary><label for="css">Your CSS</label><textarea id="css" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="edit-help"></textarea></details>
+      <p id="edit-help" class="note">Use ordinary browser code and the included <code>makeQuestion</code> and <code>evaluateAnswer</code> functions. The engine and MIT notice are included in the downloaded page. Switching to another game needs a renderer for that game's question shape.</p>
+    </section>
+    <section aria-labelledby="preview-heading" class="preview"><h2 id="preview-heading">Your live preview</h2><iframe id="preview" title="Your puzzle integration preview" sandbox="allow-scripts" referrerpolicy="no-referrer"></iframe></section>
+  </div>
+  <footer><p><a href="https://github.com/daouksalim-alt/loopwise-core/blob/main/docs/QUICKSTART.md">Integration guide</a> · <a href="../browser/">All six games</a> · <a href="../../downloads/loopwise-starter.html" download="loopwise-starter.html">Original offline starter</a></p><p>No clinical benefit or validated IQ score is claimed. Answer keys are inspectable. Opening the lab or running an unchanged preview is not an independent integration.</p></footer>
+</main>
+<script id="example-data" type="application/json">__LOOPWISE_LAB_DATA__</script>
+<script type="module" src="app.mjs"></script>
+</body>
+</html>

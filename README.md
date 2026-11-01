@@ -10,7 +10,7 @@ The package extracts game logic from Salim Daouk's Loopwise project into a small
 
 ## Try one integration
 
-Building a small browser game or a learning demo? [Download the offline starter](https://daouksalim-alt.github.io/loopwise-core/downloads/loopwise-starter.html), open the saved HTML file in a browser, and follow the [10-minute integration trial](docs/QUICKSTART.md). No account, package installation or server is needed for the downloaded starter.
+Building a small browser game or a learning demo? [Edit a working integration in your browser](https://daouksalim-alt.github.io/loopwise-core/examples/lab/) or [download the offline starter](https://daouksalim-alt.github.io/loopwise-core/downloads/loopwise-starter.html), then follow the [10-minute integration trial](docs/QUICKSTART.md). No account, package installation or server is needed for either route. The integration lab lets you change the host HTML, CSS and JavaScript, run a sandboxed preview and download a complete page. Edits are not saved or sent anywhere; download before closing the tab.
 
 We would like to learn whether another developer can use one generator in a real prototype. [Tell us what worked or where you got stuck](https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml). Please report your actual experience; a failed attempt is useful too. See the [independent-use record](docs/ADOPTION.md) for what has and has not been verified.
 
