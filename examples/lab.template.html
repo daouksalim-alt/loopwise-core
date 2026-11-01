@@ -26,7 +26,7 @@
       <details><summary>CSS · colors, layout and type</summary><label for="css">Your CSS</label><textarea id="css" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="edit-help"></textarea></details>
       <p id="edit-help" class="note">Use ordinary browser code and the included <code>makeQuestion</code> and <code>evaluateAnswer</code> functions. The engine and MIT notice are included in the downloaded page. Switching to another game needs a renderer for that game's question shape.</p>
     </section>
-    <section aria-labelledby="preview-heading" class="preview"><h2 id="preview-heading">Your live preview</h2><iframe id="preview" title="Your puzzle integration preview" sandbox="allow-scripts" referrerpolicy="no-referrer"></iframe></section>
+    <section aria-labelledby="preview-heading" class="preview"><h2 id="preview-heading">Your live preview</h2><!-- Forms enable submit handlers; the preview CSP still blocks form destinations. --><iframe id="preview" title="Your puzzle integration preview" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer"></iframe></section>
   </div>
   <footer><p><a href="https://github.com/daouksalim-alt/loopwise-core/blob/main/docs/QUICKSTART.md">Integration guide</a> · <a href="../browser/">All six games</a> · <a href="../../downloads/loopwise-starter.html" download="loopwise-starter.html">Original offline starter</a></p><p>No clinical benefit or validated IQ score is claimed. Answer keys are inspectable. Opening the lab or running an unchanged preview is not an independent integration.</p></footer>
 </main>
