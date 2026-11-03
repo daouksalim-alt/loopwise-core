@@ -14,7 +14,7 @@
     <p class="eyebrow">EDIT → RUN → TRY YOUR PAGE</p>
     <h1>Make one puzzle your own.</h1>
     <p>Change this working example directly in your browser. The library generates and checks the question; you control the page.</p>
-    <ol><li>Under <strong>HTML</strong>, change the heading or the seed input's <code>my-first-puzzle</code> value. Under <strong>JavaScript</strong>, try changing how the answer feedback is displayed.</li><li>Choose <strong>Run preview</strong> and answer a question.</li><li>Download your page or <a href="https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml">share what worked or blocked you</a>.</li></ol>
+    <ol><li>Under <strong>HTML</strong>, change the heading or the seed input's <code>my-first-puzzle</code> value. Under <strong>JavaScript</strong>, try changing how the answer feedback is displayed.</li><li>Choose <strong>Run preview</strong> and answer a question.</li><li>Download your page or <a href="#feedback-heading">share what worked or blocked you</a>.</li></ol>
     <p class="note">Your edits stay in this tab; they are not saved or sent anywhere. Download before closing. The preview blocks network requests and runs separately from the editor. This is a maintainer example, not evidence of outside adoption.</p>
   </header>
   <div class="actions"><button id="run" type="button">Run preview</button><button id="download" type="button" class="secondary">Download your HTML</button><button id="reset" type="button" class="secondary">Reset example</button><button id="undo-reset" type="button" class="secondary" hidden>Undo reset</button></div>
@@ -28,6 +28,12 @@
     </section>
     <section aria-labelledby="preview-heading" class="preview"><h2 id="preview-heading">Your live preview</h2><!-- Forms enable submit handlers; the preview CSP still blocks form destinations. --><iframe id="preview" title="Your puzzle integration preview" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer"></iframe></section>
   </div>
+  <section aria-labelledby="feedback-heading">
+    <h2 id="feedback-heading">Tried it? One sentence helps.</h2>
+    <p>Tell us what you were building and the first thing that worked or got in your way. For example: “I tried this in ___; I got stuck at ___.” A failed attempt is useful too.</p>
+    <p><a href="https://linkedin.com/feed/update/urn:li:share:7523184313333399552">Reply on LinkedIn</a> · <a href="https://bsky.app/profile/salimdaouk.bsky.social/post/3mzemjjs3ft23">Reply on Bluesky</a> · <a href="https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml">Open a GitHub issue</a></p>
+    <p class="note">Choose the account you already use. These are public replies; a link to your own project is optional.</p>
+  </section>
   <footer><p><a href="https://github.com/daouksalim-alt/loopwise-core/blob/main/docs/QUICKSTART.md">Integration guide</a> · <a href="../browser/">All six games</a> · <a href="../../downloads/loopwise-starter.html" download="loopwise-starter.html">Original offline starter</a></p><p>No clinical benefit or validated IQ score is claimed. Answer keys are inspectable. Opening the lab or running an unchanged preview is not an independent integration.</p></footer>
 </main>
 <script id="example-data" type="application/json">__LOOPWISE_LAB_DATA__</script>
