@@ -1,6 +1,6 @@
 # Loopwise Core
 
-[Try the browser demo](https://daouksalim-alt.github.io/loopwise-core/examples/browser/) · [Download version 0.1.1](https://github.com/daouksalim-alt/loopwise-core/releases/tag/v0.1.1) · [Verified release checks](https://github.com/daouksalim-alt/loopwise-core/actions/runs/41234835493)
+[Try the browser demo](https://daouksalim-alt.github.io/loopwise-core/examples/browser/) · [Download version 0.1.1](https://github.com/daouksalim-alt/loopwise-core/releases/tag/v0.1.1) · [Current verification](https://github.com/daouksalim-alt/loopwise-core/actions/workflows/ci.yml)
 
 Deterministic puzzle generation and answer checking for small learning and recreational game projects. The same inputs reproduce the same questions, making bug reports and regression tests easier to investigate.
 
@@ -85,6 +85,8 @@ The package is for recreation and learning. It does not measure IQ, diagnose cog
 The host application is responsible for keyboard controls, focus order, readable sizing, timing, motion preferences, and assistive-technology testing. `optionLabels` provides descriptions for Odd One Out renderers. The ink-color task is inherently visual and is not accessible to everyone; offer another activity where needed. Supplying text descriptions does not establish equivalent task difficulty or complete accessibility.
 
 ## Maintenance and release
+
+[Maintenance and verification](docs/MAINTENANCE.md) links the published seed fix, installed-package and TypeScript checks, current CI, and the feedback-to-release workflow. It distinguishes completed work from proposed priorities and unverified outside use.
 
 See [contributing](CONTRIBUTING.md), [security](SECURITY.md), [provenance](PROVENANCE.md), and the [proposed roadmap and release process](ROADMAP.md). A CI workflow is included for Node.js 22 and 24. Check the repository's Actions page for current hosted results; local verification is described in [the changelog](CHANGELOG.md).
 
