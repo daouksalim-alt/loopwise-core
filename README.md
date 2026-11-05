@@ -1,6 +1,6 @@
 # Loopwise Core
 
-[Try the browser demo](https://daouksalim-alt.github.io/loopwise-core/examples/browser/) · [Download version 0.1.1](https://github.com/daouksalim-alt/loopwise-core/releases/tag/v0.1.1) · [Current verification](https://github.com/daouksalim-alt/loopwise-core/actions/workflows/ci.yml)
+[Try the browser demo](https://daouksalim-alt.github.io/loopwise-core/examples/browser/) · [Download version 0.1.1](https://github.com/daouksalim-alt/loopwise-core/releases/tag/v0.1.1) · [Verified release checks](https://github.com/daouksalim-alt/loopwise-core/actions/runs/41234835493)
 
 Deterministic puzzle generation and answer checking for small learning and recreational game projects. The same inputs reproduce the same questions, making bug reports and regression tests easier to investigate.
 
@@ -86,8 +86,10 @@ The host application is responsible for keyboard controls, focus order, readable
 
 ## Maintenance and release
 
-[Maintenance and verification](docs/MAINTENANCE.md) links the published seed fix, installed-package and TypeScript checks, current CI, and the feedback-to-release workflow. It distinguishes completed work from proposed priorities and unverified outside use.
-
 See [contributing](CONTRIBUTING.md), [security](SECURITY.md), [provenance](PROVENANCE.md), and the [proposed roadmap and release process](ROADMAP.md). A CI workflow is included for Node.js 22 and 24. Check the repository's Actions page for current hosted results; local verification is described in [the changelog](CHANGELOG.md).
 
 The MIT license covers this standalone package. The parent Loopwise application and its repository remain private and all rights reserved. The `private: true` flag in `package.json` prevents accidental npm publication; it does not restrict the public source repository or its MIT license.
+
+## Maintenance and first-user support
+
+[Join the first-user pilot](https://github.com/daouksalim-alt/loopwise-core/issues/1) with a real prototype or a failed integration attempt. For engine problems, the [local replay command](docs/INTEGRATION.md#replay-a-report-locally) helps reproduce exact inputs. The [six-month maintenance plan](docs/MAINTENANCE_PLAN.md) prioritizes observed developer needs and distinguishes planned work from verified adoption.

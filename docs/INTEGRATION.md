@@ -65,3 +65,15 @@ These implementation choices are not a WCAG conformance assessment. Validate a f
 ## Reproducible reports
 
 When reporting a problem, include the package version or commit, game ID, seed, index, difficulty, browser/runtime, and expected versus observed behavior. The example's “Inspect the generated question” panel supplies the exact output. Do not include personal or sensitive data in a seed or public issue.
+
+### Replay a report locally
+
+Save the following as `report.json` in your checkout:
+
+```json
+{"version":"0.1.1","gameId":"math","index":7,"seed":"example-only","difficulty":2,"answer":0}
+```
+
+Run `node scripts/replay.mjs report.json`. It prints the exact generated question and whether the supplied answer is correct. Omit `answer` to inspect a question without evaluating a response. Memory answers use an array of tile indices; other answers use an integer option index. Replace the sample values with the actual failing inputs, and include expected versus observed behavior and runtime details in your issue.
+
+The command rejects a different library version rather than silently replaying it with the wrong engine. Check out the reported version to investigate historical behavior. It reads a local JSON file, executes no supplied code and makes no network requests. Output includes the answer key. Use synthetic seeds; do not put personal or private data in public reports. This reproduces engine output, not host UI behavior.
