@@ -1,6 +1,6 @@
 export type Seed = string | number;
 export type Difficulty = 1 | 2 | 3;
-export type GameId = 'sequence' | 'color' | 'numbers' | 'math' | 'words' | 'odd';
+export type GameId = keyof QuestionByGame;
 
 export interface Game {
   readonly id: GameId;
@@ -21,7 +21,15 @@ export interface ColorQuestion extends OptionsQuestion { type: 'color'; word: st
 export interface WordQuestion extends OptionsQuestion { type: 'word'; display: string; clue: string; }
 export interface OddQuestion extends OptionsQuestion { type: 'odd'; optionLabels: string[]; }
 export interface LogicQuestion extends OptionsQuestion { type: 'reasoning'; }
-export type Question = MemoryQuestion | MathQuestion | NumberQuestion | ColorQuestion | WordQuestion | OddQuestion;
+type QuestionByGame = {
+  sequence: MemoryQuestion;
+  color: ColorQuestion;
+  numbers: NumberQuestion;
+  math: MathQuestion;
+  words: WordQuestion;
+  odd: OddQuestion;
+};
+export type Question = QuestionByGame[GameId];
 export type WorkoutQuestion = Question & { gameId: GameId };
 export type ReasoningQuestion = (LogicQuestion | MathQuestion | NumberQuestion) & { gameId: 'reasoning' };
 
@@ -31,7 +39,7 @@ export function seededRandom(seed: Seed): () => number;
 /** Copies the array and shuffles it; rng must return finite values in [0, 1). */
 export function shuffled<T>(array: readonly T[], rng: () => number): T[];
 /** Throws for unknown IDs, invalid seed, unsafe/negative index, or difficulty outside 1–3. */
-export function makeQuestion(gameId: GameId, index: number, seed: Seed, difficulty?: Difficulty): Question;
+export function makeQuestion<Id extends GameId>(gameId: Id, index: number, seed: Seed, difficulty?: Difficulty): QuestionByGame[Id];
 /** A real YYYY-MM-DD calendar date, selected by the caller; no timezone is inferred. */
 export function dailyGames(day: string): GameId[];
 export function makeWorkout(day: string, difficulty?: Difficulty): WorkoutQuestion[];
