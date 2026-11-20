@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 — November 19, 2026
+
+- TypeScript now infers the result from the game ID passed to `makeQuestion`. A math renderer can read `question.display` and `question.options` directly. The installed-package compiler check covers all six IDs and callers that select a game at runtime.
+- The JavaScript engine and its seeded output are identical to 0.1.1. Use the version recorded with your question when replaying a saved report.
+
 ## Integration lab — November 1, 2026
 
 - Add a browser-only editor for the starter's HTML, CSS and JavaScript, a sandboxed preview, and HTML export with the exact engine and its MIT notice included.

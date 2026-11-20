@@ -4,23 +4,27 @@ The library produces plain question objects. A host application owns rendering, 
 
 ## Install in another project
 
-The source is public, but this package is not published to the npm registry. To install the exact local version after cloning the repository:
+From your Node.js 22+ project's root, install version 0.1.2 from its exact GitHub revision.
+
+```sh
+npm install --ignore-scripts https://github.com/daouksalim-alt/loopwise-core/archive/961efd0f3b409ae02c204aaace87c0d9ef9bc9cd.tar.gz
+```
+
+npm records the archive URL under `@daouksalim-alt/loopwise-core` in your dependencies and its checksum in the default `package-lock.json`. Commit both files so collaborators can install the same revision with `npm ci`. The [runnable Node.js example](../README.md#use-it-in-your-nodejs-project) uses the public package import and checks a player's selected answer. In TypeScript, a literal game ID selects its result type. For example, `makeQuestion('math', 0, 'lesson-a').options` is a string array.
+
+### Install from a local checkout
+
+To try unpublished changes or install offline, pack your local checkout and give npm the archive in your consuming project. The example assumes sibling directories:
 
 ```sh
 # In the loopwise-core checkout:
 npm pack --ignore-scripts
 
-# In a separate Node.js ES-module project alongside the checkout:
-npm install --ignore-scripts ../loopwise-core/daouksalim-alt-loopwise-core-0.1.1.tgz
+# In your own project:
+npm install --offline --ignore-scripts --no-audit ../loopwise-core/daouksalim-alt-loopwise-core-0.1.2.tgz
 ```
 
-Use the actual archive filename printed by `npm pack` if the version changes. Import through the public package name:
-
-```js
-import { makeQuestion, evaluateAnswer } from '@daouksalim-alt/loopwise-core';
-```
-
-The package provides ES modules and declarations for TypeScript. A browser app can use the source module directly, as below, or resolve the package with its existing bundler. The repository's `npm run check:package` installs an archive into a temporary project and exercises every runtime export. `npm run check:types` verifies a strict TypeScript consumer with version 5.9.3 of the compiler; only this compiler check may fetch a development tool from npm.
+If the version changes, use the archive filename printed by `npm pack`. In either case, import from `@daouksalim-alt/loopwise-core` in your Node.js ES module or bundler entry point.
 
 ## Run the browser example
 
@@ -37,7 +41,7 @@ The example imports `../../src/games.js`; there is no build step, package instal
 ## Minimal host flow
 
 ```js
-import { makeQuestion, evaluateAnswer } from './src/games.js';
+import { makeQuestion, evaluateAnswer } from '@daouksalim-alt/loopwise-core';
 
 const replay = { gameId: 'math', index: 0, seed: 'lesson-a', difficulty: 2 };
 const question = makeQuestion(replay.gameId, replay.index, replay.seed, replay.difficulty);
@@ -68,10 +72,10 @@ When reporting a problem, include the package version or commit, game ID, seed, 
 
 ### Replay a report locally
 
-Save the following as `report.json` in your checkout:
+The replay script is a maintainer tool in the current repository checkout. From that checkout, save the following as `report.json`:
 
 ```json
-{"version":"0.1.1","gameId":"math","index":7,"seed":"example-only","difficulty":2,"answer":0}
+{"version":"0.1.2","gameId":"math","index":7,"seed":"example-only","difficulty":2,"answer":0}
 ```
 
 Run `node scripts/replay.mjs report.json`. It prints the exact generated question and whether the supplied answer is correct. Omit `answer` to inspect a question without evaluating a response. Memory answers use an array of tile indices; other answers use an integer option index. Replace the sample values with the actual failing inputs, and include expected versus observed behavior and runtime details in your issue.

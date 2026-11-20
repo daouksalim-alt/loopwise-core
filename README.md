@@ -1,10 +1,10 @@
 # Loopwise Core
 
-[Try the browser demo](https://daouksalim-alt.github.io/loopwise-core/examples/browser/) · [Download version 0.1.1](https://github.com/daouksalim-alt/loopwise-core/releases/tag/v0.1.1) · [Verified release checks](https://github.com/daouksalim-alt/loopwise-core/actions/runs/41234835493)
+[Try the browser demo](https://daouksalim-alt.github.io/loopwise-core/examples/browser/) · [Download the 0.1.2 source](https://github.com/daouksalim-alt/loopwise-core/archive/961efd0f3b409ae02c204aaace87c0d9ef9bc9cd.tar.gz) · [Verification runs](https://github.com/daouksalim-alt/loopwise-core/actions/workflows/ci.yml)
 
 Deterministic puzzle generation and answer checking for small learning and recreational game projects. The same inputs reproduce the same questions, making bug reports and regression tests easier to investigate.
 
-**Status:** `0.1.1`, October 31, 2026. Package name: `@daouksalim-alt/loopwise-core`. The source is available under the [MIT license](LICENSE). It has not been published to npm, and external adoption is not yet established.
+**Version 0.1.2** · November 19, 2026. Package name: `@daouksalim-alt/loopwise-core`. The source is available under the [MIT license](LICENSE). It has not been published to npm, and external adoption is not yet established.
 
 The package extracts game logic from Salim Daouk's Loopwise project into a small module with no runtime dependencies. It contains no account system, analytics, storage, networking, ads, or billing. A separate browser example shows how to render and answer the generated questions.
 
@@ -12,11 +12,36 @@ The package extracts game logic from Salim Daouk's Loopwise project into a small
 
 Building a small browser game or a learning demo? [Edit a working integration in your browser](https://daouksalim-alt.github.io/loopwise-core/examples/lab/) or [download the offline starter](https://daouksalim-alt.github.io/loopwise-core/downloads/loopwise-starter.html), then follow the [10-minute integration trial](docs/QUICKSTART.md). No account, package installation or server is needed for either route. The integration lab lets you change the host HTML, CSS and JavaScript, run a sandboxed preview and download a complete page. Edits are not saved or sent anywhere; download before closing the tab.
 
-We would like to learn whether another developer can use one generator in a real prototype. [Tell us what worked or where you got stuck](https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml). Please report your actual experience; a failed attempt is useful too. See the [independent-use record](docs/ADOPTION.md) for what has and has not been verified.
+We would like to learn whether another developer can use one generator in a real prototype. [Tell us what worked or where you got stuck](https://github.com/daouksalim-alt/loopwise-core/issues/1). Please report your actual experience; a failed attempt is useful too. See the [independent-use record](docs/ADOPTION.md) for what has and has not been verified.
 
-## Try the local package
+## Use it in your Node.js project
 
-Use Git and Node.js 22 or later. The verification command includes an offline package installation in a temporary directory; it does not fetch runtime dependencies.
+With Node.js 22 or later, run this in a project that has a `package.json`. Use `npm init -y` first if you are starting in an empty folder.
+
+```sh
+npm install --ignore-scripts https://github.com/daouksalim-alt/loopwise-core/archive/961efd0f3b409ae02c204aaace87c0d9ef9bc9cd.tar.gz
+```
+
+Save this as `quiz.mjs`. It presents the same question on both runs so you can choose an answer and check it.
+
+```js
+import { makeQuestion, evaluateAnswer } from '@daouksalim-alt/loopwise-core';
+
+const question = makeQuestion('math', 0, 'classroom-demo', 2);
+console.log(question.display);
+question.options.forEach((option, index) => console.log(index + 1, option));
+
+if (process.argv[2] !== undefined) {
+  const selectedIndex = Number(process.argv[2]) - 1;
+  console.log(evaluateAnswer(question, selectedIndex) ? 'Correct' : 'Incorrect');
+}
+```
+
+Run `node quiz.mjs` to see the four options for `11 + 9`. Then run `node quiz.mjs 2` to select the second option, `20`. The expected result is `Correct`. Changing the seed or index generates another question.
+
+For a browser app with a bundler, use the same package import. For plain HTML, use the [offline starter](https://daouksalim-alt.github.io/loopwise-core/downloads/loopwise-starter.html). The [integration guide](docs/INTEGRATION.md) covers host controls, rendering and local package installation.
+
+## Run the repository checks
 
 ```sh
 git clone https://github.com/daouksalim-alt/loopwise-core.git
@@ -25,26 +50,7 @@ npm run verify
 npm run example
 ```
 
-To try the browser example, run `python3 -m http.server 8000 --bind 127.0.0.1` from the repository root and open <http://localhost:8000/examples/browser/>. It uses the same exported module, with editable seed, game and difficulty controls. See the [integration guide](docs/INTEGRATION.md) for consumer installation and rendering details.
-
-The package checks validate the exported API from an installed tarball, not just source-relative imports. `npm run check:types` additionally checks a TypeScript consumer with the pinned compiler used in CI; this separate check requires npm registry access on first use.
-
-```js
-import { makeQuestion, evaluateAnswer, makeWorkout } from './src/games.js';
-
-const question = makeQuestion('math', 0, 'classroom-demo', 2);
-console.log(question.display, question.options);
-
-// The consuming application collects the player's selected option index.
-const selectedOption = 0;
-console.log(evaluateAnswer(question, selectedOption));
-
-// Supply the intended local calendar date explicitly.
-const workout = makeWorkout('2026-10-31', 2);
-console.log(workout.length); // 15 questions, across three games
-```
-
-Browser applications can import the same ES module when served over HTTP. The library does not read the system clock or infer a time zone. The host application chooses the date and renders the questions.
+The verification command tests an offline package installation in a temporary project. `npm run check:types` also checks a TypeScript consumer with the pinned compiler used in CI and requires registry access on first use. To run the [browser example locally](docs/INTEGRATION.md#run-the-browser-example), start a static HTTP server from the repository root.
 
 ## Games and output
 
@@ -73,6 +79,15 @@ Questions include a prompt and explanation. Choice questions include the correct
 | `evaluateAnswer(question, answer)` | Check a choice index or memory tile array |
 
 Use a non-negative safe integer for `index`, a string or finite number for `seed`, and integer difficulty `1`, `2`, or `3`. Numeric and string versions of a seed, such as `1` and `'1'`, intentionally identify the same sequence. Dates must be real calendar dates in `YYYY-MM-DD` format. Invalid generator inputs are rejected; invalid answer submissions return `false`.
+
+For a daily workout, pass the calendar date chosen by your application. The engine leaves local date and time-zone selection to the host.
+
+```js
+import { makeWorkout } from '@daouksalim-alt/loopwise-core';
+
+const workout = makeWorkout('2026-10-31', 2);
+console.log(workout.length); // 15 questions across three games
+```
 
 Memory answers may list the target tiles in any order, but must contain exactly the target set without duplicates. Choice answers must be integer indices, not numeric strings. Difficulty changes the relevant generators; not every game has a different rule at each difficulty.
 

@@ -1,6 +1,6 @@
 {
   "name": "@daouksalim-alt/loopwise-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Deterministic, dependency-free puzzle generation and answer checking extracted from Loopwise.",
   "private": true,
   "license": "MIT",

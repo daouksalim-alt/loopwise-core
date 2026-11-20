@@ -2,11 +2,11 @@
 
 Loopwise Core is looking for developers building small browser games, coding exercises, or recreational learning tools who can try one generator in a project of their own.
 
-Start with the [integration trial](QUICKSTART.md) and [share your feedback](https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml). A failed integration or a clear explanation of why this library is not useful is valuable feedback.
+Start with the [integration trial](QUICKSTART.md) and [share your feedback](https://github.com/daouksalim-alt/loopwise-core/issues/1). A failed integration or a clear explanation of why this library is not useful is valuable feedback.
 
 ## Current evidence
 
-As of October 31, 2026, no independent integrations have been verified. The parent Loopwise application, browser demo and offline starter are maintainer-owned examples. Automated tests and maintainer smoke tests are validation, not outside users.
+As of November 19, 2026, the [public pilot thread](https://github.com/daouksalim-alt/loopwise-core/issues/1) has no developer reports, and we have verified no independent integrations. The parent Loopwise application, browser demo and offline starter are maintainer-owned examples. Automated tests and maintainer smoke tests are validation, not outside users.
 
 The first milestone is three independent integration attempts with concrete feedback, including unsuccessful attempts. This is a goal, not a forecast or a claim that participants have been recruited.
 
