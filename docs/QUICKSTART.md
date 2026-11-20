@@ -30,11 +30,9 @@ The download is generated from the repository's engine source and includes the M
 
 ## Tell us what happened
 
-Open the [integration feedback form](https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml). A GitHub account is required, and your issue is public. Useful feedback is:
+Leave a sentence in the [GitHub feedback thread](https://github.com/daouksalim-alt/loopwise-core/issues/1). What did you try to build, and what happened when you ran it? If you got stuck, the first step that failed is worth reporting.
 
-- What you tried to build, and whether it worked in your page.
-- The first confusing or blocked step, with a small reproduction if possible.
-- Whether you would keep using the library, and the one change that would help most.
+For a problem you want the maintainer to investigate, you can [open a separate issue](https://github.com/daouksalim-alt/loopwise-core/issues/new?template=integration-feedback.yml). Include the version and a small example if you have them. GitHub replies and issues are public and require a GitHub account.
 
 A public project link is optional. Do not include private source, personal information, credentials, student details, or health data. You do not need to star the project or publish your work to provide feedback. A demo visit alone does not demonstrate an integration.
 

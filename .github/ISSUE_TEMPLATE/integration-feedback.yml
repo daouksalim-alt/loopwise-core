@@ -20,23 +20,14 @@ body:
   - type: input
     id: version
     attributes:
-      label: Version and environment
-      description: Package version or commit, plus browser or Node.js version.
+      label: Version and environment (optional)
+      description: If something failed, which package version or commit and which browser or Node.js version did you use?
       placeholder: "0.1.1; Firefox; plain HTML project"
-    validations:
-      required: true
-  - type: textarea
-    id: use-case
-    attributes:
-      label: What were you trying to build?
-      description: Which generator did you try, and where would it fit?
-    validations:
-      required: true
   - type: textarea
     id: experience
     attributes:
-      label: What worked, and what got in your way?
-      description: Setup trouble, API confusion, a missing feature, or a reason this was not useful are all welcome. Include the smallest synthetic reproduction if relevant.
+      label: What did you try to build, and what happened?
+      description: A sentence about what worked or the first step that failed is enough.
     validations:
       required: true
   - type: input
